@@ -12,6 +12,13 @@ spec:
       labels:
         app: laravel
     spec:
+      initContainers:
+      - name: copy-laravel
+        image: agafumiya/laravel-demo:latest
+        command: ['sh', '-c', 'cp -r /var/www/laravel/* /shared/ && chown -R www-data:www-data /shared']
+        volumeMounts:
+        - name: laravel-data
+          mountPath: /shared
       containers:
       - name: laravel
         image: agafumiya/laravel-demo:latest
