@@ -1,13 +1,13 @@
 # 手順
 
 ## 事前準備
-- /docker/Dockerfileを使用してイメージをbuild
-  - $ docker build -t agafumiya/laravel-demo:latest -f docker/Dockerfile
-- 起動確認  
-  - $ docker run -p 8080:8000 agafumiya/laravel-demo:latest
+- /docker/***/Dockerfileを使用してイメージをbuild
+  - $ docker build -t agafumiya/laravel-demo:latest -f docker/app/Dockerfile
+  - $ docker build -t agafumiya/laravel-demo-nginx:latest -f docker/nginx/Dockerfile
 - イメージをdockerhubにpush
   - $ docker push agafumiya/laravel-demo:latest
-- Githubにこのソースコードリポジトリをアップしておく
+  - $ docker push agafumiya/laravel-demo-nginx:latest
+- Githubにこのソースコードリポジトリを作成してコードをプッシュしておく
 
 ## kindでクラスタ作成
 - $ kind create cluster --name laravel-argo --config kind-config.yaml

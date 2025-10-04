@@ -17,7 +17,24 @@ spec:
         image: agafumiya/laravel-demo:latest
         imagePullPolicy: Always
         ports:
-        - containerPort: 8000
+        - containerPort: 9000
+        volumeMounts:
+        - name: laravel-data
+          mountPath: /var/www/laravel
         env:
         - name: APP_ENV
           value: production
+      - name: nginx
+        image: agafumiya/laravel-demo-nginx:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 80
+        volumeMounts:
+        - name: laravel-data
+          mountPath: /var/www/laravel
+        env:
+        - name: APP_ENV
+          value: production
+    volumes:
+    - name: laravel-data
+      emptyDir: {}
