@@ -35,6 +35,6 @@ spec:
         env:
         - name: APP_ENV
           value: production
-    volumes:
-    - name: laravel-data
-      emptyDir: {}
+      volumes:
+      - name: laravel-data
+        emptyDir: {}
