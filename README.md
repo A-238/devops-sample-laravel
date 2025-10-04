@@ -26,4 +26,5 @@
 ## ArgoCd起動
 - $ kubectl apply -f argocd-app.yaml
 - $ kubectl -n argocd get applications
-- http://localhost:8080
+- Laravel: http://localhost:8080
+- Argo CD: https://localhost:30081
