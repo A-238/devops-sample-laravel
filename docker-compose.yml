@@ -1,0 +1,25 @@
+services:
+  nginx:
+    build:
+      context: .
+      dockerfile: docker/nginx/Dockerfile
+    ports:
+      - "8080:80"
+    volumes:
+      - laravel-data:/var/www/laravel
+    depends_on:
+      - laravel
+
+  laravel:
+    build:
+      context: .
+      dockerfile: docker/app/Dockerfile
+    volumes:
+      - laravel-data:/var/www/laravel
+    environment:
+      - APP_ENV=production
+    expose:
+      - "9000"
+
+volumes:
+  laravel-data:
