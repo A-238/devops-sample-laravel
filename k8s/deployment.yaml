@@ -12,22 +12,12 @@ spec:
       labels:
         app: laravel
     spec:
-      initContainers:
-      - name: copy-laravel
-        image: agafumiya/laravel-demo:latest
-        command: ['sh', '-c', 'cp -r /var/www/laravel/* /shared/ && chown -R www-data:www-data /shared']
-        volumeMounts:
-        - name: laravel-data
-          mountPath: /shared
       containers:
       - name: laravel
         image: agafumiya/laravel-demo:latest
         imagePullPolicy: Always
         ports:
         - containerPort: 9000
-        volumeMounts:
-        - name: laravel-data
-          mountPath: /var/www/laravel
         env:
         - name: APP_ENV
           value: production
@@ -36,12 +26,6 @@ spec:
         imagePullPolicy: Always
         ports:
         - containerPort: 80
-        volumeMounts:
-        - name: laravel-data
-          mountPath: /var/www/laravel
         env:
         - name: APP_ENV
           value: production
-      volumes:
-      - name: laravel-data
-        emptyDir: {}
