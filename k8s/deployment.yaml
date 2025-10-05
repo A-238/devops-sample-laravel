@@ -35,7 +35,7 @@ spec:
         - name: APP_ENV
           value: production
       - name: nginx
-        image: agafumiya/laravel-demo-nginx:v0.1.2
+        image: agafumiya/laravel-demo-nginx:v0.1.3
         imagePullPolicy: Always
         ports:
         - containerPort: 80
