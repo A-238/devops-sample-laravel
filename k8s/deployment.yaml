@@ -48,7 +48,6 @@ spec:
         volumeMounts:
         - name: laravel-data
           mountPath: /var/www/laravel
-          readOnly: true
         env:
         - name: APP_ENV
           value: production
