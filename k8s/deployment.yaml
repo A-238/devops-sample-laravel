@@ -25,6 +25,10 @@ spec:
           cp -r /var/www/laravel/. /shared
           chown -R www-data:www-data /shared/storage /shared/bootstrap/cache
           chmod -R ug+rwx /shared/storage /shared/bootstrap/cache
+          mkdir -p /shared/database
+          [ -f /shared/database/database.sqlite ] || touch /shared/database/database.sqlite
+          chown -R www-data:www-data /shared/database
+          chmod -R ug+rwx /shared/database
         volumeMounts:
         - name: laravel-data
           mountPath: /shared
